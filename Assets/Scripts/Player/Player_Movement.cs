@@ -29,7 +29,7 @@ public class Player_Movement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!Physics.Raycast(transform.position, -transform.up, groundCheckDistance, groundLayer)) Debug.Log("Not near ground");
+        //if (!Physics.Raycast(transform.position, -transform.up, groundCheckDistance, groundLayer)) Debug.Log("Not near ground");
 
         rb.AddForce(gimbal.forward * movementSpeed * Input.GetAxis("Vertical") * Time.deltaTime);
         rb.AddForce(gimbal.right * movementSpeed * Input.GetAxis("Horizontal") * Time.deltaTime);

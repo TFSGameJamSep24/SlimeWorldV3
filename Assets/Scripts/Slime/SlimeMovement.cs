@@ -79,8 +79,6 @@ public class SlimeMovement : MonoBehaviour
     {
         rb.AddForce(force);
 
-        Debug.Log(rb.velocity.magnitude);
-
         if (rb.velocity.magnitude > maxVelocity)
         {
             anim.SetTrigger("Pop");
@@ -90,8 +88,7 @@ public class SlimeMovement : MonoBehaviour
 
     public void PopSlime()
     {
-        gameObject.SetActive(false);
-
+        
         float popRadius = 10f;
         Collider[] colliders = Physics.OverlapSphere(transform.position, popRadius);
 
@@ -107,6 +104,7 @@ public class SlimeMovement : MonoBehaviour
         
         }
         Debug.Log("Slime popped");
+        
         Destroy(gameObject);
     }
 

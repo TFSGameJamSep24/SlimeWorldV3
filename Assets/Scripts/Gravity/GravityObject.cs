@@ -23,6 +23,11 @@ public class GravityObject : MonoBehaviour
         GravitySource.instance.OnApplyGravity += ApplyGravity;
     }
 
+    private void OnDestroy()
+    {
+        GravitySource.instance.OnApplyGravity -= ApplyGravity;
+    }
+
     private void ApplyGravity(float value)
     {
         Vector3 directionToPlanet = (GravitySource.instance.transform.position - transform.position).normalized;
