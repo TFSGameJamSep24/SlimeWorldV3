@@ -10,7 +10,7 @@ public class SlimeBehaviour : MonoBehaviour
     [SerializeField] private float regenRate = 5f;
     [SerializeField] private float damageRate = 10f;
 
-    private float currentHP;
+    public float currentHP;
     private Coroutine regenCoroutine;
     private Animator anim;
 
@@ -61,17 +61,8 @@ public class SlimeBehaviour : MonoBehaviour
         Debug.Log("Slime popped");
     }
 
-
-
-    //timer for restTime
-    //float HP
-    //float regen 
-    //float damageRate
-
-    //if (!isBlown) restTimer counts down and when it reaches zero it's starts to regen to slime's max HP
-    //bool isBlown
-    //
-
-
-
+    public float GetHPRatio()
+    {
+        return currentHP / maxHP;
+    }
 }

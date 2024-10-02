@@ -47,6 +47,8 @@ GameObject:
   - component: {fileID: 94332376141746128}
   - component: {fileID: 1092065998659838114}
   - component: {fileID: 1821652444751774216}
+  - component: {fileID: 7801933444447319031}
+  - component: {fileID: 7315571296554694167}
   m_Layer: 7
   m_Name: Slime
   m_TagString: Untagged
@@ -62,7 +64,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5485555043686667303}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.6200008, z: 4.733}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -182,6 +184,35 @@ MonoBehaviour:
   squishSpeed: 0.5
   rotationSpeed: 0.05
   maxVelocity: 8
+--- !u!114 &7801933444447319031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5485555043686667303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8de8819c95f3c349a584dec31576dd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 100
+  regenRate: 5
+  damageRate: 10
+  currentHP: 0
+--- !u!114 &7315571296554694167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5485555043686667303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb42ddb4fd98d084fa00b90393c9e08a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeMaterial: {fileID: 0}
 --- !u!1 &8298275313878133051
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,6 +275,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: b37135ce07bb16540bbd0c6a807c4fcf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

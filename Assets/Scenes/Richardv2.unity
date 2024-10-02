@@ -2328,11 +2328,63 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slime (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7472239835541916111, guid: 33d68b8fcd4c7b741a0327fc4144982d,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7472239835541916111, guid: 33d68b8fcd4c7b741a0327fc4144982d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: b37135ce07bb16540bbd0c6a807c4fcf, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5485555043686667303, guid: 33d68b8fcd4c7b741a0327fc4144982d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1255887260}
+    - targetCorrespondingSourceObject: {fileID: 5485555043686667303, guid: 33d68b8fcd4c7b741a0327fc4144982d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1255887261}
   m_SourcePrefab: {fileID: 100100000, guid: 33d68b8fcd4c7b741a0327fc4144982d, type: 3}
+--- !u!1 &1255887259 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5485555043686667303, guid: 33d68b8fcd4c7b741a0327fc4144982d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1255887258}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1255887260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255887259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8de8819c95f3c349a584dec31576dd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 100
+  regenRate: 5
+  damageRate: 10
+--- !u!114 &1255887261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255887259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb42ddb4fd98d084fa00b90393c9e08a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeMaterial: {fileID: 0}
 --- !u!1 &1269003090
 GameObject:
   m_ObjectHideFlags: 0

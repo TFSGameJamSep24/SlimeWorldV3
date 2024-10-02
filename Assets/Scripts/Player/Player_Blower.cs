@@ -62,16 +62,6 @@ public class Player_Blower : MonoBehaviour
             vfx.StopEffects();
 
             if (blowerAudioSource != null) blowerAudioSource.Stop();
-
-            RaycastHit[] blownObjects = Physics.SphereCastAll(blowerPoint.position, blowerRange, blowerPoint.forward, blowerRange, objectsLayer);
-            foreach (RaycastHit objectToBlow in blownObjects)
-            {
-                SlimeBehaviour slimeBehaviour = objectToBlow.collider.GetComponent<SlimeBehaviour>();
-                if (slimeBehaviour != null)
-                {
-                    slimeBehaviour.StartRegeneration();
-                }
-            }
         }
     }
 
@@ -102,12 +92,12 @@ public class Player_Blower : MonoBehaviour
             slimeBehavior.Damage();
         }
 
-        SlimeMovement slimeMovement = slime.GetComponent<SlimeMovement>();
+        Rigidbody slimeRB = slime.GetComponent<Rigidbody>();
 
-        if (slimeMovement != null)  
+        if (rb != null)  
         {
             Vector3 forceDirection = (slime.transform.position - transform.position).normalized;
-            slimeMovement.ApplyBlowerForce(forceDirection * blowStrength);
+            slimeRB.AddForce(forceDirection * blowStrength * Time.deltaTime);
         }
     }
 }

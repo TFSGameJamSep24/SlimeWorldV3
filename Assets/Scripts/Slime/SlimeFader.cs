@@ -5,10 +5,18 @@ using UnityEngine;
 public class SlimeFader : MonoBehaviour
 {
     public Material fadeMaterial;
+    private SlimeBehaviour slimeBehaviour;
 
     private void Awake()
     {
         PrimeFader();
+
+        slimeBehaviour = GetComponent<SlimeBehaviour>();
+    }
+
+    private void Update()
+    {
+        Fade(slimeBehaviour.GetHPRatio());
     }
 
     private void PrimeFader()
@@ -23,12 +31,12 @@ public class SlimeFader : MonoBehaviour
         mr.materials[1].color = fadeMaterial.color;
     }
 
-    public void Fade()
+    public void Fade(float ratio)
     {
         Debug.Log("Fading");
 
         Color fade = fadeMaterial.color;
-        fade.a += 0.002f;
+        fade.a = 1 - ratio;
         fadeMaterial.color = fade;
     }
 }
