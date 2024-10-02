@@ -31,8 +31,8 @@ public class Player_Movement : MonoBehaviour
     {
         if (!Physics.Raycast(transform.position, -transform.up, groundCheckDistance, groundLayer)) Debug.Log("Not near ground");
 
-        rb.AddForce(gimbal.forward * movementSpeed * Input.GetAxis("Vertical"));
-        rb.AddForce(gimbal.right * movementSpeed * Input.GetAxis("Horizontal"));
+        rb.AddForce(gimbal.forward * movementSpeed * Input.GetAxis("Vertical") * Time.deltaTime);
+        rb.AddForce(gimbal.right * movementSpeed * Input.GetAxis("Horizontal") * Time.deltaTime);
 
         TurnModel();
     }

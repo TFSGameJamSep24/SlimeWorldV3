@@ -56,6 +56,16 @@ public class AudioManager : MonoBehaviour
         sfx.Play();
     }
 
+    public AudioSource PlaySFX(AudioClip clip, bool getClip)
+    {
+        AudioSource sfx = GetSFXSource();
+        sfx.clip = clip;
+        sfx.Play();
+
+        if (!getClip) return null;
+        else return sfx;
+    }
+
     public void SetSFXVolume(float volume)
     {
         PlayerPrefs.SetFloat("SFX", volume);

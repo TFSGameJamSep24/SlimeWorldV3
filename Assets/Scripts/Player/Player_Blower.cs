@@ -12,8 +12,23 @@ public class Player_Blower : MonoBehaviour
 
     [Header("Blow Strength Properties")]
     [SerializeField] private float blowStrength = 10;
+    [SerializeField] private float initialPushBackForce = 10;
+    [SerializeField] private float pushBackForce = 10;
+    private Rigidbody rb;
 
-    public bool isActive = false;
+    [Header("Blower VFX Properties")]
+    [SerializeField] private VFX_Parent vfx;
+
+    [Header("Blower Audio Properties")]
+    [SerializeField] private AudioClip blowerSFX;
+    private AudioSource blowerAudioSource = null;
+
+    private bool isActive = false;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -29,8 +44,25 @@ public class Player_Blower : MonoBehaviour
     {
         isActive = !isActive;
 
-        if (isActive) blowerPoint.gameObject.SetActive(true);
-        else if (!isActive) blowerPoint.gameObject.SetActive(false);
+        if (isActive)
+        {
+            rb.AddForce(-blowerPoint.forward * initialPushBackForce);
+            vfx.PlayEffects();
+
+            if (blowerAudioSource == null)
+            {
+                if (blowerSFX != null) blowerAudioSource = AudioManager.instance.PlaySFX(blowerSFX, true);
+            }
+
+            else blowerAudioSource.Play();
+        }
+
+        else if (!isActive)
+        {
+            vfx.StopEffects();
+
+            if (blowerAudioSource != null) blowerAudioSource.Stop();
+        }
     }
 
     private void ActivateBlower()
@@ -44,12 +76,14 @@ public class Player_Blower : MonoBehaviour
                 BlowAway(objectToBlow.collider.gameObject);
             }
         }
+
+        rb.AddForce(-blowerPoint.forward * pushBackForce * Time.deltaTime);
     }
 
     private void BlowAway(GameObject slime)
     {
         Rigidbody slimeRB = slime.GetComponent<Rigidbody>();
 
-        slimeRB.AddForce((slime.transform.position - transform.position).normalized * blowStrength);
+        slimeRB.AddForce((slime.transform.position - transform.position).normalized * blowStrength * Time.deltaTime);
     }
 }
