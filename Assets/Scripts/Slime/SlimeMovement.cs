@@ -12,7 +12,7 @@ public class SlimeMovement : MonoBehaviour
     //[SerializeField] private float squishAmount = 0.5f;
     [SerializeField] private float squishSpeed = 0.5f;
     [SerializeField] private float rotationSpeed = 2f;
-    [SerializeField] private float maxVelocity = 10f;
+    [SerializeField] private float maxVelocity = 5f;
 
     private Vector3 originalScale;
     private Rigidbody rb;
@@ -25,6 +25,7 @@ public class SlimeMovement : MonoBehaviour
     {
         originalScale = transform.localScale;
         rb = GetComponent<Rigidbody>();
+        rb.drag = 2f; //Might not need, testing
         anim = GetComponent<Animator>();
         StartCoroutine(ChangeDirectionRoutine());
     }
@@ -34,12 +35,16 @@ public class SlimeMovement : MonoBehaviour
         
         //Calculate movement direction relative to gravity
         Vector3 gravityDirection = (GravitySource.instance.transform.position - transform.position).normalized;
+        float gravityStrength = 8f; //Adjust this as needed
+
         Vector3 right = Vector3.Cross(gravityDirection, transform.forward).normalized;
         Vector3 forward = Vector3.Cross(right, gravityDirection).normalized;
 
         Vector3 movement = (right * randomDirection.x + forward * randomDirection.z).normalized * speed;
 
         rb.velocity = movement + rb.velocity.y * gravityDirection;
+
+        rb.AddForce(gravityDirection * gravityStrength, ForceMode.Acceleration);
 
         if (movement != Vector3.zero)
         {
@@ -64,14 +69,42 @@ public class SlimeMovement : MonoBehaviour
 
         if (rb.velocity.magnitude > maxVelocity)
         {
-            anim.SetTrigger("Pop");
+            rb.velocity = rb.velocity.normalized * maxVelocity;
         }
+    }
+
+    public void ApplyBlowerForce(Vector3 force)
+    {
+        rb.AddForce(force, ForceMode.Impulse);
+
+        if (force.magnitude > maxVelocity)
+        {
+            anim.SetTrigger("Pop");
+            PopSlime();
+        }
+
     }
 
     public void PopSlime()
     {
         gameObject.SetActive(false);
 
+        float popRadius = 5f;
+        Collider[] colliders = Physics.OverlapSphere(transform.position, popRadius);
+
+        foreach (Collider collider in colliders)
+        {
+            Rigidbody rb = collider.GetComponent<Rigidbody>();
+            if (rb != null && rb != this.rb)
+            {
+                Vector3 direction = (rb.transform.position = transform.position).normalized;
+                float forceAmount = 50f;
+                rb.AddForce(direction *  forceAmount);
+            }
+        
+        }
+        Debug.Log("Slime popped");
+        Destroy(gameObject);
     }
 
 
