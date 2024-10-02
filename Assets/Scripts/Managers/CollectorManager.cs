@@ -38,7 +38,7 @@ public class CollectorManager : MonoBehaviour
         }
     }
 
-    private int GetTotalPoints()
+    public int GetTotalPoints()
     {
         int total = 0;
 
