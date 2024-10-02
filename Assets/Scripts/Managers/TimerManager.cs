@@ -14,7 +14,7 @@ public class TimerManager : MonoBehaviour
     public float levelTime = 300f; // 5 mins
     private float currentTime;
 
-    private bool isTimerRunning = false;
+    public bool isTimerRunning = false;
 
     private void Awake()
     {
@@ -57,7 +57,7 @@ public class TimerManager : MonoBehaviour
         currentTime -= Time.deltaTime;
         currentTime = Mathf.Clamp(currentTime, 0, levelTime);
 
-        UIManager.Instance.UpdateTimer(currentTime);
+        //UIManager.Instance.UpdateTimer(currentTime);
 
         if (currentTime <= 0)
         {
