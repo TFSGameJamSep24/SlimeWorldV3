@@ -4,37 +4,35 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 
-public class DocileSlime : MonoBehaviour
+public class SlimeMovement : MonoBehaviour
 {
 
     [Header("Slime Movement Properties")]
     [SerializeField] private float speed = 2f;
-    [SerializeField] private float squishAmount = 0.05f;
+    [SerializeField] private float squishAmount = 0.5f;
     [SerializeField] private float squishSpeed = 0.5f;
     [SerializeField] private float rotationSpeed = 2f;
 
     private Vector3 originalScale;
     private Rigidbody rb;
     private Coroutine wobbleCoroutine;
+    private Vector3 randomDirection;
 
     private void Start()
     {
         originalScale = transform.localScale;
         rb = GetComponent<Rigidbody>();
+        StartCoroutine(ChangeDirectionRoutine());
     }
 
     private void Update()
     {
-        //Need to set up AI movement
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-
         //Calculate movement direction relative to gravity
         Vector3 gravityDirection = (GravitySource.instance.transform.position - transform.position).normalized;
         Vector3 right = Vector3.Cross(gravityDirection, transform.forward).normalized;
         Vector3 forward = Vector3.Cross(right, gravityDirection).normalized;
 
-        Vector3 movement = (right * horizontal + forward * vertical).normalized * speed;
+        Vector3 movement = (right * randomDirection.x + forward * randomDirection.z).normalized * speed;
 
         rb.velocity = movement + rb.velocity.y * gravityDirection;
 
@@ -59,6 +57,17 @@ public class DocileSlime : MonoBehaviour
             transform.localScale = Vector3.Lerp(transform.localScale, originalScale, Time.deltaTime * squishSpeed);
         }
     }
+
+
+    private IEnumerator ChangeDirectionRoutine()
+    {
+        while (true)
+        {
+            randomDirection = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
+            yield return new WaitForSeconds(Random.Range(5f, 10f));
+        }
+    }
+
     private IEnumerator WobbleEffect()
     {
         while (true)
