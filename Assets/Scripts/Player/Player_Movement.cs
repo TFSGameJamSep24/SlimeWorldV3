@@ -21,9 +21,13 @@ public class Player_Movement : MonoBehaviour
     [SerializeField] private float groundCheckDistance = 1f;
     [SerializeField] private LayerMask groundLayer;
 
+    private Animator anim;
+    private bool isMoving = false;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -35,13 +39,29 @@ public class Player_Movement : MonoBehaviour
         rb.AddForce(gimbal.right * movementSpeed * Input.GetAxis("Horizontal") * Time.deltaTime);
 
         TurnModel();
+
+        if (Input.GetKeyDown(KeyCode.L)) anim.Play("Dance");
     }
 
     private void TurnModel()
     {
         Vector3 targetDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-        if (targetDirection == Vector3.zero) return;
+        if (targetDirection == Vector3.zero)
+        {
+            if (isMoving)
+            {
+                isMoving = false;
+                anim.CrossFade("Idle_Equipped", 0.1f);
+            }
+            return;
+        }
+
+        if (!isMoving)
+        {
+            isMoving = true;
+            anim.CrossFade("Running_Equipped", 0.1f);
+        }
 
         Quaternion toRotation = Quaternion.LookRotation(gimbal.forward * Input.GetAxis("Vertical") + gimbal.right * Input.GetAxis("Horizontal"), transform.up);
 

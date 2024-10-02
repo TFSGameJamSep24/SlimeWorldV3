@@ -1,18 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UI_Points : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private TextMeshProUGUI pointsText;
+    private int pointsCount;
+
+    private void Awake()
     {
-        
+        pointsText.GetComponentInChildren<TextMeshProUGUI>();
+        pointsCount = 0;
+        pointsText.text = pointsCount.ToString();
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+        CollectorManager.instance.OnCollect += AddPoints;
+    }
+
+    private void OnDestroy()
+    {
+        CollectorManager.instance.OnCollect -= AddPoints;
+    }
+
+    private void AddPoints(int points)
+    {
+        pointsCount += points;
+        pointsText.text = pointsCount.ToString();
     }
 }
