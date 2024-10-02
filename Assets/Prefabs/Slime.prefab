@@ -47,8 +47,8 @@ GameObject:
   - component: {fileID: 94332376141746128}
   - component: {fileID: 1092065998659838114}
   - component: {fileID: 1821652444751774216}
-  - component: {fileID: 7801933444447319031}
-  - component: {fileID: 7315571296554694167}
+  - component: {fileID: 1594521230101243772}
+  - component: {fileID: 4618988836500700353}
   m_Layer: 7
   m_Name: Slime
   m_TagString: Untagged
@@ -180,11 +180,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 107f8a14a6f6d894296a05144afe1c05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 750
+  speed: 1500
   squishSpeed: 0.5
   rotationSpeed: 0.05
   maxVelocity: 8
---- !u!114 &7801933444447319031
+--- !u!114 &1594521230101243772
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -197,10 +197,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 100
-  regenRate: 5
-  damageRate: 10
+  regenRate: 15
+  damageRate: 50
   currentHP: 0
---- !u!114 &7315571296554694167
+--- !u!114 &4618988836500700353
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
