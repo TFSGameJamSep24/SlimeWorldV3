@@ -20,9 +20,9 @@ public class SceneManagerController : MonoBehaviour
         }
     }
 
-    public void LoadMainHub()
+    public void LoadLevelSelect()
     {
-        LoadScene("MainHub");
+        LoadScene("LevelSelect");
     }
 
     public void LoadScene(string sceneName)
@@ -53,7 +53,7 @@ public class SceneManagerController : MonoBehaviour
         }
         else
         {
-            LoadMainHub(); //go back to main menu
+            LoadLevelSelect(); //go back to main menu
         }
     }
 
