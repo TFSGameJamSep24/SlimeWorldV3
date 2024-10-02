@@ -54,7 +54,11 @@ public class Player_Blower : MonoBehaviour
                 if (blowerSFX != null) blowerAudioSource = AudioManager.instance.PlaySFX(blowerSFX, true);
             }
 
-            else blowerAudioSource.Play();
+            else
+            {
+                if (blowerAudioSource.clip != blowerSFX) blowerAudioSource.clip = blowerSFX;
+                blowerAudioSource.Play();
+            }
         }
 
         else if (!isActive)
@@ -71,27 +75,32 @@ public class Player_Blower : MonoBehaviour
 
         foreach (RaycastHit objectToBlow in blownObjects)
         {
-            if (Vector3.Angle((objectToBlow.transform.position - transform.position).normalized, blowerPoint.forward) <= maxBlowerAngle)
+            Rigidbody objectRB = objectToBlow.collider.GetComponent<Rigidbody>();
+
+            if (!objectRB) continue;
+
+            Vector3 forceDirection = (objectToBlow.transform.position - transform.position).normalized;
+
+            if (Vector3.Angle(forceDirection, blowerPoint.forward) <= maxBlowerAngle)
             {
-                BlowAway(objectToBlow.collider.gameObject);
+                objectRB.AddForce(forceDirection * blowStrength * Time.deltaTime); ;
             }
+
+            // Get Slime Behaviour and do damage
+
+
+            // Temp
+
+            SlimeFader fader = objectToBlow.collider.GetComponent<SlimeFader>();
+
+            if (fader)
+            {
+                fader.Fade();
+            }
+
+            // Temp
         }
 
         rb.AddForce(-blowerPoint.forward * pushBackForce * Time.deltaTime);
-    }
-
-    private void BlowAway(GameObject slime)
-    {
-        /*Rigidbody slimeRB = slime.GetComponent<Rigidbody>();
-
-        slimeRB.AddForce((slime.transform.position - transform.position).normalized * blowStrength * Time.deltaTime);*/
-
-        SlimeMovement slimeMovement = slime.GetComponent<SlimeMovement>();
-
-        if (slimeMovement != null)  
-        {
-            Vector3 forceDirection = (slime.transform.position - transform.position).normalized;
-            slimeMovement.ApplyBlowerForce(forceDirection * blowStrength);
-        }
     }
 }
