@@ -6,6 +6,7 @@ using UnityEngine;
 public class GravityObject : MonoBehaviour
 {
     private Rigidbody rb;
+    public bool isPlayer;
 
     [SerializeField] private float rotateTime = 2;
     
@@ -22,11 +23,22 @@ public class GravityObject : MonoBehaviour
         GravitySource.instance.OnApplyGravity += ApplyGravity;
     }
 
+    private void OnDestroy()
+    {
+        GravitySource.instance.OnApplyGravity -= ApplyGravity;
+    }
+
     private void ApplyGravity(float value)
     {
         Vector3 directionToPlanet = (GravitySource.instance.transform.position - transform.position).normalized;
 
         rb.AddForce(directionToPlanet * value * rb.mass);
+
+        if (!isPlayer)
+        {
+            return;
+        }
+
 
         Quaternion worldDirection = Quaternion.FromToRotation(-transform.up, directionToPlanet) * transform.rotation;
         transform.rotation = Quaternion.Slerp(transform.rotation, worldDirection, rotateTime * Time.deltaTime);

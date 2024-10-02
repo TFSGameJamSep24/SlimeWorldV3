@@ -86,12 +86,18 @@ public class Player_Blower : MonoBehaviour
 
         slimeRB.AddForce((slime.transform.position - transform.position).normalized * blowStrength * Time.deltaTime);*/
 
-        SlimeMovement slimeMovement = slime.GetComponent<SlimeMovement>();
+        SlimeBehaviour slimeBehavior = slime.GetComponent<SlimeBehaviour>();
+        if (slimeBehavior != null)
+        {
+            slimeBehavior.Damage();
+        }
 
-        if (slimeMovement != null)  
+        Rigidbody slimeRB = slime.GetComponent<Rigidbody>();
+
+        if (rb != null)  
         {
             Vector3 forceDirection = (slime.transform.position - transform.position).normalized;
-            slimeMovement.ApplyBlowerForce(forceDirection);
+            slimeRB.AddForce(forceDirection * blowStrength * Time.deltaTime);
         }
     }
 }

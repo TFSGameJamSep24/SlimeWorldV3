@@ -40,15 +40,17 @@ public class SlimeMovement : MonoBehaviour
         Vector3 right = Vector3.Cross(gravityDirection, transform.forward).normalized;
         Vector3 forward = Vector3.Cross(right, gravityDirection).normalized;
 
-        Vector3 movement = (right * randomDirection.x + forward * randomDirection.z).normalized * speed;
+        Vector3 movement = (transform.right * randomDirection.x + transform.forward * randomDirection.z).normalized * speed * Time.deltaTime;
 
-        rb.velocity = movement + rb.velocity.y * gravityDirection;
+        rb.AddForce(movement);
+
+        //rb.velocity = movement + rb.velocity.y * gravityDirection;
 
         rb.AddForce(gravityDirection * gravityStrength, ForceMode.Acceleration);
 
         if (movement != Vector3.zero)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(movement, gravityDirection);
+            Quaternion targetRotation = Quaternion.LookRotation(movement, -gravityDirection);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
             /*if (wobbleCoroutine == null)
@@ -75,12 +77,13 @@ public class SlimeMovement : MonoBehaviour
 
     public void ApplyBlowerForce(Vector3 force)
     {
-        rb.AddForce(force, ForceMode.Impulse);
+        rb.AddForce(force);
 
-        if (force.magnitude > maxVelocity)
+        Debug.Log(rb.velocity.magnitude);
+
+        if (rb.velocity.magnitude > maxVelocity)
         {
             anim.SetTrigger("Pop");
-            PopSlime();
         }
 
     }
@@ -89,7 +92,7 @@ public class SlimeMovement : MonoBehaviour
     {
         gameObject.SetActive(false);
 
-        float popRadius = 5f;
+        float popRadius = 10f;
         Collider[] colliders = Physics.OverlapSphere(transform.position, popRadius);
 
         foreach (Collider collider in colliders)
@@ -97,9 +100,9 @@ public class SlimeMovement : MonoBehaviour
             Rigidbody rb = collider.GetComponent<Rigidbody>();
             if (rb != null && rb != this.rb)
             {
-                Vector3 direction = (rb.transform.position = transform.position).normalized;
+                Vector3 direction = (rb.transform.position - transform.position).normalized;
                 float forceAmount = 50f;
-                rb.AddForce(direction *  forceAmount);
+                rb.AddForce(direction * forceAmount);
             }
         
         }
