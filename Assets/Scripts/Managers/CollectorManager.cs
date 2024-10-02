@@ -6,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 public class CollectorManager : MonoBehaviour
 {
+    public static CollectorManager instance;
+
     [Header("Point collector")]
     [SerializeField] private List<Collectible> collectedStuff;
 
@@ -15,9 +17,10 @@ public class CollectorManager : MonoBehaviour
     public delegate void Collect(int value);
     public event Collect OnCollect;
 
-    private void Update()
+    private void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.J)) Debug.Log($"Total Points is {GetTotalPoints()}");
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
