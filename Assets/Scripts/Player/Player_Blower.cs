@@ -91,7 +91,7 @@ public class Player_Blower : MonoBehaviour
         if (slimeMovement != null)  
         {
             Vector3 forceDirection = (slime.transform.position - transform.position).normalized;
-            slimeMovement.ApplyBlowerForce(forceDirection);
+            slimeMovement.ApplyBlowerForce(forceDirection * blowStrength);
         }
     }
 }

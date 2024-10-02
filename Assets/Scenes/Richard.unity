@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18d98d4c03d3f744d932f43ae0dd2c9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 1
   rotateTime: 5
 --- !u!54 &17136635
 Rigidbody:
@@ -242,7 +243,7 @@ MonoBehaviour:
   objectsLayer:
     serializedVersion: 2
     m_Bits: 128
-  blowStrength: 4000
+  blowStrength: 10
   initialPushBackForce: 1200
   pushBackForce: 1000
   vfx: {fileID: 70910127}
@@ -1068,7 +1069,7 @@ Transform:
   m_GameObject: {fileID: 587809044}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.372, y: 27.6, z: -2.727}
+  m_LocalPosition: {x: 0.88, y: 27.6, z: -2.727}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1087,7 +1088,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18d98d4c03d3f744d932f43ae0dd2c9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateTime: 2
+  isPlayer: 0
+  rotateTime: 0
 --- !u!54 &587809048
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1097,7 +1099,7 @@ Rigidbody:
   m_GameObject: {fileID: 587809044}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 2
+  m_Drag: 3
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -1161,10 +1163,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 107f8a14a6f6d894296a05144afe1c05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 750
   squishSpeed: 0.5
-  rotationSpeed: 2
-  maxVelocity: 10
+  rotationSpeed: 0.05
+  maxVelocity: 8
 --- !u!1 &699157153
 GameObject:
   m_ObjectHideFlags: 0
