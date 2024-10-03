@@ -17,6 +17,11 @@ public class SlimeMovement : MonoBehaviour
     [Header("Slime Walk Sounds")]
     [SerializeField] private AudioClip walkSound;
 
+    [Header("Delay Properties")]
+    [SerializeField] private float moveDelay;
+    private bool canMove = true;
+    private bool isDelayed = false;
+
     private Vector3 originalScale;
     private Rigidbody rb;
     private Animator anim;
@@ -33,9 +38,10 @@ public class SlimeMovement : MonoBehaviour
         StartCoroutine(ChangeDirectionRoutine());
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        
+        if (!canMove) return;
+
         //Calculate movement direction relative to gravity
         Vector3 gravityDirection = (GravitySource.instance.transform.position - transform.position).normalized;
         float gravityStrength = 8f; //Adjust this as needed
@@ -136,4 +142,23 @@ public class SlimeMovement : MonoBehaviour
          }
      }*/
 
+    public void BlownAway()
+    {
+        if (isDelayed) return;
+
+        isDelayed = true;
+        canMove = false;
+        StartCoroutine(MoveReset());
+
+        rb.velocity = Vector3.zero;
+
+        Debug.Log("I'm Delayed");
+    }
+
+    IEnumerator MoveReset()
+    {
+        yield return new WaitForSeconds(moveDelay);
+        canMove = true;
+        isDelayed = false;
+    }
 }

@@ -22,6 +22,7 @@ public class Player_Movement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
 
     private Animator anim;
+    private Player_Blower pb;
     private bool isMoving = false;
 
     private bool canMove = true;
@@ -79,8 +80,6 @@ public class Player_Movement : MonoBehaviour
 
     private void LevelEnd()
     {
-        Debug.Log("This is called");
-
         canMove = false;
         anim.Play("Victory");
         LevelManager.instance.OnLevelEnd -= LevelEnd;
