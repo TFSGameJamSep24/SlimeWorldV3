@@ -80,8 +80,6 @@ public class Player_Movement : MonoBehaviour
 
     private void LevelEnd()
     {
-        Debug.Log("This is called");
-
         canMove = false;
         anim.Play("Victory");
         LevelManager.instance.OnLevelEnd -= LevelEnd;

@@ -132,9 +132,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18d98d4c03d3f744d932f43ae0dd2c9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 1
+  isPlayer: 0
   rotateTime: 5
-  model: {fileID: 8790243317389724684}
+  model: {fileID: 2074408998370249735}
 --- !u!135 &94332376141746128
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 2
-  collectSound: {fileID: 0}
+  collectSound: {fileID: 8300000, guid: a0c8c268aebd219418ae3454c2f8535e, type: 3}
 --- !u!114 &1821652444751774216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,6 +187,7 @@ MonoBehaviour:
   rotationSpeed: 0.05
   maxVelocity: 8
   walkSound: {fileID: 8300000, guid: dab63c180490a3f4ba23f0a72278d8b1, type: 3}
+  moveDelay: 3
 --- !u!114 &1369050639606414379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8de8819c95f3c349a584dec31576dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 100
+  maxHP: 70
   regenRate: 15
   damageRate: 50
   popSound: {fileID: 8300000, guid: c3740f06f2e839d47a96637c82eebd30, type: 3}

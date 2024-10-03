@@ -29,6 +29,8 @@ public class CollectorManager : MonoBehaviour
 
         if (collectCheck != null)
         {
+            if (collectedStuff.Contains(collectCheck)) return;
+
             //  Add object to list and update listeners
             collectedStuff.Add(collectCheck);
             OnCollect?.Invoke(collectCheck.GetPoints());

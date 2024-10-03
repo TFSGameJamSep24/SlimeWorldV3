@@ -97,7 +97,7 @@ public class Player_Blower : MonoBehaviour
     {
         Rigidbody slimeRB = slime.GetComponent<Rigidbody>();
 
-        slimeRB.AddForce(((slime.transform.position - transform.position).normalized + slime.transform.up) * blowStrength * Time.deltaTime);
+        slimeRB.AddForce((slime.transform.position - transform.position).normalized * blowStrength * Time.deltaTime);
 
         SlimeBehaviour slimeBehavior = slime.GetComponent<SlimeBehaviour>();
         if (slimeBehavior != null)
