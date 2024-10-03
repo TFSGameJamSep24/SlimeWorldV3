@@ -203,7 +203,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 9
-      minScalar: 6
+      minScalar: 9
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -903,7 +903,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 25
+      scalar: 12
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -4810,7 +4810,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e823cd5b5d27c0f4b8256e7c12ee3e6d, type: 2}
+  - {fileID: 2100000, guid: 91e35940fd175144e9ee7afbf1c1359e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9698,7 +9698,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e823cd5b5d27c0f4b8256e7c12ee3e6d, type: 2}
+  - {fileID: 2100000, guid: 91e35940fd175144e9ee7afbf1c1359e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

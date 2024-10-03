@@ -24,6 +24,9 @@ public class Player_Blower : MonoBehaviour
     [SerializeField] private AudioClip blowerSFX;
     private AudioSource blowerAudioSource = null;
 
+    [Header("Blower AttackPoint")]
+    [SerializeField] private Transform attachPoint;
+
     private bool isActive = false;
 
     private void Awake()
@@ -65,7 +68,11 @@ public class Player_Blower : MonoBehaviour
         {
             vfx.StopEffects();
 
-            if (blowerAudioSource != null) blowerAudioSource.Stop();
+            if (blowerAudioSource != null)
+            {
+                blowerAudioSource.Stop();
+                blowerAudioSource = null;
+            }
         }
     }
 
@@ -82,6 +89,8 @@ public class Player_Blower : MonoBehaviour
         }
 
         rb.AddForce(-blowerPoint.forward * pushBackForce * Time.deltaTime);
+
+        blowerPoint.position = attachPoint.position + (attachPoint.forward * -1);
     }
 
     private void BlowAway(GameObject slime)
@@ -96,12 +105,11 @@ public class Player_Blower : MonoBehaviour
             slimeBehavior.Damage();
         }
 
-       /*imeMovement slimeMovement = slime.GetComponent<SlimeMovement>();
+        SlimeMovement slimeMovement = slime.GetComponent<SlimeMovement>();
 
         if (slimeMovement != null)  
         {
-            Vector3 forceDirection = (slime.transform.position - transform.position).normalized;
-            slimeMovement.ApplyBlowerForce(forceDirection * blowStrength);
-        }*/
+            slimeMovement.BlownAway();
+        }
     }
 }

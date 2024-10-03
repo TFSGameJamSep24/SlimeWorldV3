@@ -53,7 +53,6 @@ public class AudioManager : MonoBehaviour
     {
         AudioSource sfx = GetSFXSource();
         sfx.clip = clip;
-        sfx.pitch = Random.value;
         sfx.Play();
     }
 

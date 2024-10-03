@@ -39,7 +39,7 @@ public class GravityObject : MonoBehaviour
         {
             if (model != null)
             {
-                Quaternion worldDownDirection = Quaternion.FromToRotation(-model.up, directionToPlanet) * model.rotation;
+                Quaternion worldDownDirection = Quaternion.FromToRotation(-transform.up, directionToPlanet) * transform.rotation;
                 model.rotation = Quaternion.Slerp(model.rotation, worldDownDirection, rotateTime * Time.deltaTime);
             }
                 

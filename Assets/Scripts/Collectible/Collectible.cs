@@ -5,7 +5,10 @@ using UnityEngine;
 public class Collectible : MonoBehaviour
 {
     [Header("Points Properties")]
-    [SerializeField] [Range(0, 10)] private int points;
+    [SerializeField][Range(0, 10)] private int points;
+
+    [Header("Audio Properties")]
+    [SerializeField] private AudioClip collectSound;
 
     private Animator anim;
 
@@ -17,21 +20,20 @@ public class Collectible : MonoBehaviour
     public void Collect()
     {
         // play animations
+        anim.Play("Collected");
 
-        // Temp
-        StartCoroutine(Collected());
-        // Temp
-    }
+        GetComponent<Rigidbody>().isKinematic = true;
 
-    IEnumerator Collected()
-    {
-        yield return new WaitForSeconds(2);
-
-        if (gameObject.activeSelf) gameObject.SetActive(false);
+        if (collectSound) AudioManager.instance.PlaySFX(collectSound);
     }
 
     public int GetPoints()
     {
         return points;
+    }
+
+    public void Collected()
+    {
+        gameObject.SetActive(false);
     }
 }
