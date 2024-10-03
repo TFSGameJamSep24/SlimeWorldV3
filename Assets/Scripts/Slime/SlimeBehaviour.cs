@@ -55,6 +55,11 @@ public class SlimeBehaviour : MonoBehaviour
         }
     }
 
+    public void TriggerPop()
+    {
+        PopSlime();
+    }
+
     private void PopSlime()
     {
         anim.SetTrigger("Pop");
