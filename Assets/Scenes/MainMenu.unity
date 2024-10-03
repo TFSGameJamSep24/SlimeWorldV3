@@ -3717,7 +3717,7 @@ GameObject:
   - component: {fileID: 1904915665}
   - component: {fileID: 1904915666}
   m_Layer: 0
-  m_Name: LevelSelectManager
+  m_Name: ButtonManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3755,6 +3755,7 @@ MonoBehaviour:
   cam: {fileID: 1429986448}
   levelSelectTheme: {fileID: 8300000, guid: 2a63282e7eb61b04887fd269220c3f73, type: 3}
   isTutorialShown: 0
+  showCredits: 0
   levels:
   - Level1
   - Level2
@@ -3773,7 +3774,7 @@ Animator:
   m_GameObject: {fileID: 1904915663}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3b4d886c8ba066f46851f9beba3466b4, type: 2}
+  m_Controller: {fileID: 9100000, guid: adfb7954432cf954e88b2dffe1b0011d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4009,7 +4010,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1904915665}
         m_TargetAssemblyTypeName: LevelSelectManager, Assembly-CSharp
-        m_MethodName: ShowTutorial
+        m_MethodName: ShowCredits
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4416,6 +4417,7 @@ GameObject:
   - component: {fileID: 2049281213}
   - component: {fileID: 2049281215}
   - component: {fileID: 2049281214}
+  - component: {fileID: 2049281216}
   m_Layer: 5
   m_Name: Credits
   m_TagString: Untagged
@@ -4487,6 +4489,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2049281212}
   m_CullTransparentMesh: 1
+--- !u!114 &2049281216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049281212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d798ad98bef46249a360cf059666714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  levelSelectTheme: {fileID: 0}
+  isTutorialShown: 0
+  showCredits: 1
+  levels:
+  - 
+  - 
+  - 
+  levelPlanets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &2099637705
 GameObject:
   m_ObjectHideFlags: 0
