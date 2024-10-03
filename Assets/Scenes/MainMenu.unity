@@ -156,7 +156,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: -333}
+  m_AnchoredPosition: {x: -100, y: -297.2}
   m_SizeDelta: {x: 600, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8336887
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: TEXT HERE
+  m_text: Pixabay, floraphonix, NathanielThomasBrack, prazkhanal, Ingafonts, 04
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 214fb7b34cfe7b14e9c586fdfee6ae08, type: 2}
   m_sharedMaterial: {fileID: -5167155804775638276, guid: 214fb7b34cfe7b14e9c586fdfee6ae08,
@@ -207,8 +207,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38
-  m_fontSizeBase: 38
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2956,7 +2956,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: -250}
+  m_AnchoredPosition: {x: -100, y: -228.2}
   m_SizeDelta: {x: 600, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1870989674
@@ -2979,7 +2979,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sounds
+  m_text: Others
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 09b5a615ccc943241aea831784e0ac40, type: 2}
   m_sharedMaterial: {fileID: -2185093777035442513, guid: 09b5a615ccc943241aea831784e0ac40,
