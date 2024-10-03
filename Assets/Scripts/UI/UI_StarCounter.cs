@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ public class UI_StarCounter : MonoBehaviour
 {
     [Header("Display Delay Properties")]
     [SerializeField] private float showStarDelay = 1f;
+    [SerializeField] private TextMeshProUGUI score;
 
     [Header("Star Display Properties")]
     [SerializeField] private Image[] images = new Image[3];
@@ -20,6 +22,12 @@ public class UI_StarCounter : MonoBehaviour
     public void ShowStars(int number)
     {
         StartCoroutine(ShowStarsHelper(number));
+        ShowScore();
+    }
+
+    private void ShowScore()
+    {
+        if (LevelManager.instance) score.text = LevelManager.instance.GetPoints().ToString();
     }
 
     IEnumerator ShowStarsHelper(int number)

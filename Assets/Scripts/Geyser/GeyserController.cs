@@ -7,6 +7,7 @@ public class GeyserController : MonoBehaviour
 
     [SerializeField] private ParticleSystem geyserParticles;
     [SerializeField] private Collider geyserCollider;
+    [SerializeField] private float geyserStrength;
     [SerializeField] private float eruptionDuration = 10f;
     [SerializeField] private float eruptionInterval = 15f;
 
@@ -38,7 +39,7 @@ public class GeyserController : MonoBehaviour
             Rigidbody rb = other.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                Vector3 pushForce = (Vector3.up + -transform.forward) * 200f;
+                Vector3 pushForce = (Vector3.up + -transform.forward) * geyserStrength;
                 rb.AddForce(pushForce, ForceMode.Impulse);
             }
         }

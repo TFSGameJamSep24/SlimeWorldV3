@@ -52,8 +52,7 @@ public class SlimeBehaviour : MonoBehaviour
     {
         while (true)
         {
-            currentHP += regenRate * Time.deltaTime;
-            Mathf.Clamp(currentHP, 0, maxHP);
+            if (currentHP < maxHP) currentHP += regenRate * Time.deltaTime;
             yield return null;
         }
     }

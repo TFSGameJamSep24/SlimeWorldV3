@@ -20,13 +20,14 @@ public class LevelSelectManager : MonoBehaviour
     [Header("LevelSelect Properties")]
     [SerializeField] private string[] levels = new string[3];
     [SerializeField] private Transform[] levelPlanets = new Transform[3];
-    private int levelIndex = -1;
+    private int levelIndex = 0;
 
     private Animator anim;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        if (LevelManager.instance) Destroy(LevelManager.instance);
     }
 
     // Start is called before the first frame update
@@ -70,6 +71,11 @@ public class LevelSelectManager : MonoBehaviour
     public void GoToLevel()
     {
         if (TransitionManager.instance) TransitionManager.instance.FadeInWhite(levels[levelIndex]);
+    }
+
+    public void GoToLevelSelect()
+    {
+        TransitionManager.instance.FadeInWhite("LevelSelect");
     }
 
     private void ResetState()
