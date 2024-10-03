@@ -1424,7 +1424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelTheme: {fileID: 0}
   starValues: 010000000200000003000000
-  points: 77
+  points: 2
   winScreenDelay: 4
 --- !u!4 &811955287
 Transform:

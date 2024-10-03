@@ -40,7 +40,7 @@ public class WinScreenManager : MonoBehaviour
         switch (starCount) 
         {
             case 0:
-                Debug.Log("Too bad");
+                if (anim != null) anim.Play("Pout");
                 break;
             case 1:
                 starCounter.ShowStars(starCount);
@@ -48,6 +48,7 @@ public class WinScreenManager : MonoBehaviour
                 break;
             case 2:
                 starCounter.ShowStars(starCount);
+                if (anim != null) anim.Play("Shrug");
                 break;
             case 3:
                 starCounter.ShowStars(starCount);

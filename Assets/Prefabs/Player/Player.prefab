@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6512544122147427837}
   m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,7 +122,7 @@ MonoBehaviour:
   objectsLayer:
     serializedVersion: 2
     m_Bits: 128
-  blowStrength: 2250
+  blowStrength: 3000
   initialPushBackForce: 1200
   pushBackForce: 500
   vfx: {fileID: 790743250484135161}
