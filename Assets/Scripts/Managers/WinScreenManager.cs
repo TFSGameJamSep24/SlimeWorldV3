@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class WinScreenManager : MonoBehaviour
 {
-    [Header("Ending Theme")]
-    [SerializeField] private AudioClip winTheme;
+    [Header("Astronaut Animator")]
+    [SerializeField] private Animator anim;
+    [SerializeField] private float[] yRotation = new float[4];
 
     private int starCount = 0;
 
@@ -16,8 +17,6 @@ public class WinScreenManager : MonoBehaviour
         if (TransitionManager.instance != null) TransitionManager.instance.FadeOutWhite();
 
         if (LevelManager.instance != null) CheckScore();
-
-        if (AudioManager.instance != null) AudioManager.instance.PlayMusic(winTheme);
     }
 
     private void CheckScore()
@@ -36,6 +35,8 @@ public class WinScreenManager : MonoBehaviour
 
         if (!starCounter) return;
 
+        RotatePlayer(starCount);
+
         switch (starCount) 
         {
             case 0:
@@ -43,13 +44,24 @@ public class WinScreenManager : MonoBehaviour
                 break;
             case 1:
                 starCounter.ShowStars(starCount);
+                if (anim != null) anim.Play("Victory");
                 break;
             case 2:
                 starCounter.ShowStars(starCount);
                 break;
             case 3:
                 starCounter.ShowStars(starCount);
+                if (anim != null) anim.Play("Dance");
                 break;
         }
+    }
+
+    private void RotatePlayer(int index)
+    {
+        Quaternion helper = anim.transform.rotation;
+
+        helper.y = yRotation[index] * Mathf.Deg2Rad;
+
+        anim.transform.rotation = helper;
     }
 }

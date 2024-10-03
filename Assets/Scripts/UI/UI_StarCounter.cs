@@ -14,6 +14,9 @@ public class UI_StarCounter : MonoBehaviour
     [Header("SFX Properties")]
     [SerializeField] private AudioClip starSound;
 
+    [Header("Music Properties")]
+    [SerializeField] private AudioClip winTheme;
+
     public void ShowStars(int number)
     {
         StartCoroutine(ShowStarsHelper(number));
@@ -23,6 +26,8 @@ public class UI_StarCounter : MonoBehaviour
     {
         if (number <= 0)
         {
+            if (winTheme != null) AudioManager.instance.PlayMusic(winTheme);
+            
             yield return null;
         }    
         
