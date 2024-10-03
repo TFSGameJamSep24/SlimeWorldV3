@@ -10,6 +10,8 @@ public class LevelSelectManager : MonoBehaviour
 
     [Header("Audio Properties")]
     [SerializeField] private AudioClip levelSelectTheme;
+    [SerializeField] private AudioClip buttonPressSFX;
+    [SerializeField] private AudioClip goToLevelSFX;
 
     [Header("Tutorial Properties")]
     [SerializeField] private bool isTutorialShown = false;
@@ -51,12 +53,16 @@ public class LevelSelectManager : MonoBehaviour
         Debug.Log("Credits");
         showCredits = !showCredits;
 
+        if (AudioManager.instance) AudioManager.instance.PlaySFX(buttonPressSFX);
+
         if (showCredits) anim.Play("ShowCredits");
         else anim.Play("HideCredits");
     }
 
     public void ChooseLevel(int index)
     {
+        if (AudioManager.instance) AudioManager.instance.PlaySFX(buttonPressSFX);
+
         ResetState();
         levelIndex = index;
         cam.Follow = levelPlanets[levelIndex];
@@ -70,11 +76,16 @@ public class LevelSelectManager : MonoBehaviour
 
     public void GoToLevel()
     {
-        if (TransitionManager.instance) TransitionManager.instance.FadeInWhite(levels[levelIndex]);
+        if (TransitionManager.instance)
+        {
+            if (AudioManager.instance) AudioManager.instance.PlayMusic(goToLevelSFX);
+            TransitionManager.instance.FadeInWhite(levels[levelIndex]);
+        }
     }
 
     public void GoToLevelSelect()
     {
+        if (AudioManager.instance) AudioManager.instance.PlaySFX(buttonPressSFX);
         TransitionManager.instance.FadeInWhite("LevelSelect");
     }
 

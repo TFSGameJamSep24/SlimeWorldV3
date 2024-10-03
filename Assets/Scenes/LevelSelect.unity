@@ -3935,6 +3935,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1429986448}
   levelSelectTheme: {fileID: 8300000, guid: 2a63282e7eb61b04887fd269220c3f73, type: 3}
+  buttonPressSFX: {fileID: 8300000, guid: 7c8bfbb41f577044eb93bdf885a4adbc, type: 3}
+  goToLevelSFX: {fileID: 8300000, guid: 698aec6708b999e4ab84f5797e2659b1, type: 3}
   isTutorialShown: 0
   showCredits: 0
   levels:

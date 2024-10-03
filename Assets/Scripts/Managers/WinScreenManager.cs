@@ -44,11 +44,11 @@ public class WinScreenManager : MonoBehaviour
                 break;
             case 1:
                 starCounter.ShowStars(starCount);
-                if (anim != null) anim.Play("Victory");
+                if (anim != null) anim.Play("Shrug");
                 break;
             case 2:
                 starCounter.ShowStars(starCount);
-                if (anim != null) anim.Play("Shrug");
+                if (anim != null) anim.Play("Victory");
                 break;
             case 3:
                 starCounter.ShowStars(starCount);
