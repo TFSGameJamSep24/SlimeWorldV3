@@ -14,6 +14,9 @@ public class LevelSelectManager : MonoBehaviour
     [Header("Tutorial Properties")]
     [SerializeField] private bool isTutorialShown = false;
 
+    [Header("Credit Properties")]
+    [SerializeField] private bool showCredits = false;
+
     [Header("LevelSelect Properties")]
     [SerializeField] private string[] levels = new string[3];
     [SerializeField] private Transform[] levelPlanets = new Transform[3];
@@ -40,6 +43,15 @@ public class LevelSelectManager : MonoBehaviour
 
         if (isTutorialShown) anim.Play("ShowTutorial");
         else anim.Play("HideTutorial");
+    }
+
+    public void ShowCredits()
+    {
+        Debug.Log("Credits");
+        showCredits = !showCredits;
+
+        if (showCredits) anim.Play("ShowCredits");
+        else anim.Play("HideCredits");
     }
 
     public void ChooseLevel(int index)
