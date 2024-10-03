@@ -33,8 +33,6 @@ public class SlimeFader : MonoBehaviour
 
     public void Fade(float ratio)
     {
-        Debug.Log("Fading");
-
         Color fade = fadeMaterial.color;
         fade.a = 1 - ratio;
         fadeMaterial.color = fade;

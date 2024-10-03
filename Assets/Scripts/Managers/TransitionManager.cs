@@ -26,18 +26,9 @@ public class TransitionManager : MonoBehaviour
         anim.Play("FadeOutWhite");
     }
 
-    private void FadeInBlack()
-    {
-        anim.Play("FadeInBlack");
-    }
-
-    private void FadeOutBlack()
-    {
-        anim.Play("FadeOutBlack");
-    }
-
     public void GoToLevel()
     {
+        AudioManager.instance.StopSounds();
         SceneManager.LoadScene(nextLevel);
     }
 }

@@ -24,15 +24,24 @@ public class Player_Movement : MonoBehaviour
     private Animator anim;
     private bool isMoving = false;
 
+    private bool canMove = true;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
     }
 
+    private void Start()
+    {
+        
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!canMove) return;
+
         //if (!Physics.Raycast(transform.position, -transform.up, groundCheckDistance, groundLayer)) Debug.Log("Not near ground");
 
         rb.AddForce(gimbal.forward * movementSpeed * Input.GetAxis("Vertical") * Time.deltaTime);
@@ -66,5 +75,11 @@ public class Player_Movement : MonoBehaviour
         Quaternion toRotation = Quaternion.LookRotation(gimbal.forward * Input.GetAxis("Vertical") + gimbal.right * Input.GetAxis("Horizontal"), transform.up);
 
         model.rotation = Quaternion.RotateTowards(model.rotation, toRotation, rotationValue * Time.deltaTime);
+    }
+
+    private void LevelEnd()
+    {
+        canMove = false;
+        LevelManager.instance.OnLevelEnd -= LevelEnd;
     }
 }

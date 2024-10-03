@@ -61,7 +61,7 @@ public class TimerManager : MonoBehaviour
 
         if (currentTime <= 0)
         {
-            GameManager.Instance.EndGame();
+            LevelManager.instance.EndLevel();
         }
 
         OnTimerUpdate?.Invoke(currentTime);
