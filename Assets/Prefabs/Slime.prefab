@@ -47,8 +47,8 @@ GameObject:
   - component: {fileID: 94332376141746128}
   - component: {fileID: 1092065998659838114}
   - component: {fileID: 1821652444751774216}
-  - component: {fileID: 1594521230101243772}
-  - component: {fileID: 4618988836500700353}
+  - component: {fileID: 1369050639606414379}
+  - component: {fileID: 1928511003427879459}
   m_Layer: 7
   m_Name: Slime
   m_TagString: Slime
@@ -184,7 +184,8 @@ MonoBehaviour:
   squishSpeed: 0.5
   rotationSpeed: 0.05
   maxVelocity: 8
---- !u!114 &1594521230101243772
+  walkSound: {fileID: 8300000, guid: dab63c180490a3f4ba23f0a72278d8b1, type: 3}
+--- !u!114 &1369050639606414379
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -199,8 +200,9 @@ MonoBehaviour:
   maxHP: 100
   regenRate: 15
   damageRate: 50
+  popSound: {fileID: 8300000, guid: c3740f06f2e839d47a96637c82eebd30, type: 3}
   currentHP: 0
---- !u!114 &4618988836500700353
+--- !u!114 &1928511003427879459
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

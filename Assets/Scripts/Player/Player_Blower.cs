@@ -15,6 +15,7 @@ public class Player_Blower : MonoBehaviour
     [SerializeField] private float initialPushBackForce = 10;
     [SerializeField] private float pushBackForce = 10;
     private Rigidbody rb;
+    private Animator anim;
 
     [Header("Blower VFX Properties")]
     [SerializeField] private VFX_Parent vfx;
@@ -28,6 +29,7 @@ public class Player_Blower : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        anim =  GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -48,6 +50,8 @@ public class Player_Blower : MonoBehaviour
         {
             rb.AddForce(-blowerPoint.forward * initialPushBackForce);
             vfx.PlayEffects();
+
+            anim.CrossFade("Running_Blowing", 0.2f);
 
             if (blowerAudioSource == null)
             {
