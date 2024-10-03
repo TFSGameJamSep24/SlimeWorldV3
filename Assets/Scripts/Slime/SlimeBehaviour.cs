@@ -10,6 +10,9 @@ public class SlimeBehaviour : MonoBehaviour
     [SerializeField] private float regenRate = 25f;
     [SerializeField] private float damageRate = 10f;
 
+    [Header("SFX Properties")]
+    [SerializeField] private AudioClip popSound;
+
     public float currentHP;
     private Coroutine regenCoroutine;
     private Animator anim;
@@ -62,6 +65,7 @@ public class SlimeBehaviour : MonoBehaviour
 
     private void PopSlime()
     {
+        if (popSound) AudioManager.instance.PlaySFX(popSound);
         anim.SetTrigger("Pop");
         StopCoroutine(RegenerateHP());
         Debug.Log("Slime popped");
