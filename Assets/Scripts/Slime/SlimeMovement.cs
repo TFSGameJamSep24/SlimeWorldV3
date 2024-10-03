@@ -14,6 +14,9 @@ public class SlimeMovement : MonoBehaviour
     [SerializeField] private float rotationSpeed = 2f;
     [SerializeField] private float maxVelocity = 5f;
 
+    [Header("Slime Walk Sounds")]
+    [SerializeField] private AudioClip walkSound;
+
     private Vector3 originalScale;
     private Rigidbody rb;
     private Animator anim;
@@ -115,6 +118,7 @@ public class SlimeMovement : MonoBehaviour
     {
         while (true)
         {
+            if (walkSound) AudioManager.instance.PlaySFX(walkSound);
             randomDirection = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
             yield return new WaitForSeconds(Random.Range(5f, 10f));
         }

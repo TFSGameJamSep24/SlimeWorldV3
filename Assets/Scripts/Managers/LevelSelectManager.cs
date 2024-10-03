@@ -36,9 +36,10 @@ public class LevelSelectManager : MonoBehaviour
     public void ShowTutorial()
     {
         Debug.Log("Pressing");
+        isTutorialShown = !isTutorialShown;
 
-        isTutorialShown = true;
-        anim.Play("ShowTutorial");
+        if (isTutorialShown) anim.Play("ShowTutorial");
+        else anim.Play("HideTutorial");
     }
 
     public void ChooseLevel(int index)
