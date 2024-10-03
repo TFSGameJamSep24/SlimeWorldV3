@@ -18,6 +18,8 @@ public class AudioButtonController : MonoBehaviour
 
     public void ToggleSliderVisibility()
     {
+        if (volumeSlider.gameObject.activeSelf) return;
+
         isSliderVisible = !isSliderVisible;
 
         volumeSlider.gameObject.SetActive(isSliderVisible);
