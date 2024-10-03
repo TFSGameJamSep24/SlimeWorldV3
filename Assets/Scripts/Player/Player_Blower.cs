@@ -82,9 +82,9 @@ public class Player_Blower : MonoBehaviour
 
     private void BlowAway(GameObject slime)
     {
-        /*Rigidbody slimeRB = slime.GetComponent<Rigidbody>();
+        Rigidbody slimeRB = slime.GetComponent<Rigidbody>();
 
-        slimeRB.AddForce((slime.transform.position - transform.position).normalized * blowStrength * Time.deltaTime);*/
+        slimeRB.AddForce((slime.transform.position - transform.position).normalized * blowStrength * Time.deltaTime);
 
         SlimeBehaviour slimeBehavior = slime.GetComponent<SlimeBehaviour>();
         if (slimeBehavior != null)
@@ -92,12 +92,12 @@ public class Player_Blower : MonoBehaviour
             slimeBehavior.Damage();
         }
 
-        Rigidbody slimeRB = slime.GetComponent<Rigidbody>();
+       /*imeMovement slimeMovement = slime.GetComponent<SlimeMovement>();
 
-        if (rb != null)  
+        if (slimeMovement != null)  
         {
             Vector3 forceDirection = (slime.transform.position - transform.position).normalized;
-            slimeRB.AddForce(forceDirection * blowStrength * Time.deltaTime);
-        }
+            slimeMovement.ApplyBlowerForce(forceDirection * blowStrength);
+        }*/
     }
 }

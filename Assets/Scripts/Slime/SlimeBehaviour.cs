@@ -7,7 +7,7 @@ public class SlimeBehaviour : MonoBehaviour
 
     [Header("Slime Health Properties")]
     [SerializeField] private float maxHP = 100f;
-    [SerializeField] private float regenRate = 5f;
+    [SerializeField] private float regenRate = 25f;
     [SerializeField] private float damageRate = 10f;
 
     public float currentHP;
@@ -18,6 +18,7 @@ public class SlimeBehaviour : MonoBehaviour
     {
         currentHP = maxHP;
         anim = GetComponent<Animator>();
+        StartCoroutine(RegenerateHP());
     }
 
     public void Damage()
@@ -46,18 +47,18 @@ public class SlimeBehaviour : MonoBehaviour
 
     private IEnumerator RegenerateHP()
     {
-        while (currentHP < maxHP)
+        while (true)
         {
             currentHP += regenRate * Time.deltaTime;
+            Mathf.Clamp(currentHP, 0, maxHP);
             yield return null;
         }
-
-        regenCoroutine = null;
     }
 
     private void PopSlime()
     {
         anim.SetTrigger("Pop");
+        StopCoroutine(RegenerateHP());
         Debug.Log("Slime popped");
     }
 
