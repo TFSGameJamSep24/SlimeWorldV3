@@ -34,7 +34,7 @@ public class Player_Movement : MonoBehaviour
 
     private void Start()
     {
-        
+        LevelManager.instance.OnLevelEnd += LevelEnd;
     }
 
     // Update is called once per frame
@@ -79,7 +79,10 @@ public class Player_Movement : MonoBehaviour
 
     private void LevelEnd()
     {
+        Debug.Log("This is called");
+
         canMove = false;
+        anim.Play("Victory");
         LevelManager.instance.OnLevelEnd -= LevelEnd;
     }
 }
