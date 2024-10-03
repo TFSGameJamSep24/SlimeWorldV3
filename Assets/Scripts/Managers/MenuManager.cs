@@ -15,13 +15,16 @@ public class MenuManager : MonoBehaviour
 
     private bool isMuted = false;
 
+    [Header("AudioProperties")]
+    [SerializeField] private AudioClip menuTheme;
+
     private void Start()
     {
         playButton.onClick.AddListener(PlayGame);
         audioButton.onClick.AddListener(ToggleAudio);
         creditsButton.onClick.AddListener(ToggleCredits);
 
-        creditsPanel.SetActive(false);
+        //creditsPanel.SetActive(false);
 
         //Set initial volume to the saved value
         float savedVolume = PlayerPrefs.GetFloat("Volume", 1f);
@@ -29,6 +32,8 @@ public class MenuManager : MonoBehaviour
         volumeSlider.value = savedVolume;
 
         volumeSlider.onValueChanged.AddListener(AdjustVolume);
+
+        if (menuTheme) AudioManager.instance.PlayMusic(menuTheme); 
     }
 
     private void PlayGame()
