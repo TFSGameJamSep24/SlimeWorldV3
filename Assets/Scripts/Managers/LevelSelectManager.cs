@@ -20,7 +20,7 @@ public class LevelSelectManager : MonoBehaviour
     [Header("LevelSelect Properties")]
     [SerializeField] private string[] levels = new string[3];
     [SerializeField] private Transform[] levelPlanets = new Transform[3];
-    private int levelIndex = -1;
+    private int levelIndex = 0;
 
     private Animator anim;
 
