@@ -9,7 +9,8 @@ public class GravityObject : MonoBehaviour
     public bool isPlayer;
 
     [SerializeField] private float rotateTime = 2;
-    
+    [SerializeField] private Transform model;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -36,11 +37,17 @@ public class GravityObject : MonoBehaviour
 
         if (!isPlayer)
         {
+            if (model != null)
+            {
+                Quaternion worldDownDirection = Quaternion.FromToRotation(-model.up, directionToPlanet) * model.rotation;
+                model.rotation = Quaternion.Slerp(model.rotation, worldDownDirection, rotateTime * Time.deltaTime);
+            }
+                
             return;
         }
 
-
         Quaternion worldDirection = Quaternion.FromToRotation(-transform.up, directionToPlanet) * transform.rotation;
         transform.rotation = Quaternion.Slerp(transform.rotation, worldDirection, rotateTime * Time.deltaTime);
+
     }
 }
